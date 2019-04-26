@@ -21,6 +21,10 @@
 * `npm run watch` .. Live-compilation in development mode.
 * `npm run build` .. Build the production assets.
 
-## API documentation:
+## API documentation
 
 https://wordpress.org/gutenberg/handbook/
+
+## Theme for testing
+
+https://github.com/WordPress/gutenberg-starter-theme

@@ -10,6 +10,7 @@ import './editor.scss';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { RichText } = wp.editor;
 
 /**
  * Register block
@@ -29,27 +30,44 @@ export default registerBlockType(
             __( 'CTA', 'wpblock' ),
             __( 'Shout Out', 'wpblock' ),
         ],
+        attributes: {
+          message: {
+              type: 'array',
+              source: 'children',
+              selector: '.message-body',
+          }
+        },
         edit: props => {
-          const { className, isSelected } = props;
-          return (
-            <div className={ className }>
-              <h2>{ __( 'Static Call to Action', 'wpblock' ) }</h2>
-              <p>{ __( 'This is really important!', 'wpblock' ) }</p>
-              {
-                isSelected && (
-                  <p className="sorry warning">{ __( '✋ Sorry! You cannot edit this block ✋', 'wpblock' ) }</p>
-                )
-              }
-            </div>
-          );
+            const { attributes: { message }, className, setAttributes } = props;
+            const onChangeMessage = message => { setAttributes( { message } ) };
+            return (
+                <div className={ className }>
+                    <h2>{ __( 'Call to Action', 'wpblock' ) }</h2>
+                    <RichText
+                        tagName="ul"
+                        multiline="li"
+                        placeholder={ __( 'Add your custom message', 'wpblock' ) }
+                      onChange={ onChangeMessage }
+                      value={ message }
+                  />
+                  {
+                    isSelected && (
+                      <p className="sorry warning">{ __( '✋ You can edit the message above', 'wpblock' ) }</p>
+                    )
+                  }
+                </div>
+            );
         },
         save: props => {
-          return (
-            <div>
-              <h2>{ __( 'Call to Action', 'wpblock' ) }</h2>
-              <p>{ __( 'This is really important!', 'wpblock' ) }</p>
-            </div>
-          );
+            const { attributes: { message } } = props;
+            return (
+                <div>
+                    <h2>{ __( 'Call to Action', 'wpblock' ) }</h2>
+                    <div class="message-body">
+                        { message }
+                    </div>
+                </div>
+            );
         },
     },
 );
