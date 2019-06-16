@@ -23,7 +23,7 @@
 
 namespace ClientName\PluginName;
 
-//  Exit if accessed directly.
+// Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -59,13 +59,13 @@ function _get_plugin_url() {
 }
 
 // Enqueue JS and CSS.
-include __DIR__ . '/lib/enqueue-scripts.php';
+require_once __DIR__ . '/lib/enqueue-scripts.php';
 
 // Register meta boxes.
-include __DIR__ . '/lib/meta-boxes.php';
+require_once __DIR__ . '/lib/meta-boxes.php';
 
 // Block Templates.
-include __DIR__ . '/lib/block-templates.php';
+require_once __DIR__ . '/lib/block-templates.php';
 
 // Dynamic Blocks.
-include __DIR__ . '/blocks/12-dynamic/index.php';
+require_once __DIR__ . '/blocks/12-dynamic/index.php';

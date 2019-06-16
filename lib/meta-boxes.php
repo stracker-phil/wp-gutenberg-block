@@ -2,6 +2,8 @@
 /**
  * Optional module to register custom post-meta values, in case your block needs to
  * store data in the postmeta table.
+ *
+ * @package ClientName\PluginName
  */
 
 namespace ClientName\PluginName;

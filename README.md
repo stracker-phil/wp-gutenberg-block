@@ -12,8 +12,10 @@
 2. Edit the plugin name in `package.json`
 3. Edit the plugin header, rename namespaces
 4. Rename the `wpblock` textdomain in all .php and .js files
-5. Run `npm install` in the plugin folder
-6. Build the assets: `npm run dev`
+5. Rename the `wpblock` script- and style handles in enqueue-scripts.php
+6. Rename the file languages/wpblock.pot
+7. Run `npm install` in the plugin folder
+8. Build the assets: `npm run dev`
 
 ### Re-build the Gutenberg blocks
 
